@@ -1,0 +1,16 @@
+.header-container {
+  height: 5rem;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.connect-btn {
+  width: 8rem;
+  height: 3rem;
+  background: #7310f6;
+  font-weight: 800;
+  color: white;
+  border-radius: 8px;
+}

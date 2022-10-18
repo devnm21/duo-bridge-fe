@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header/Header";
+import SwitchChain from "./components/SwitchChain/SwitchChain";
+import BalanceTransfer from "./components/BalanceTransfer/BalanceTransfer";
+import { useState } from "react";
 
 function App() {
+  const [balance, setBalance] = useState(100);
+  const [transferAmount, setTransferAmount] = useState(100);
+  const [from, setFrom] = useState("BSC");
+  const [to, setTo] = useState("PoL");
+
+  const toggleChain = () => {
+    setFrom(to);
+    setTo(from);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header name="Duo Bridge" />
+      <SwitchChain from={from} to={to} toggle={toggleChain} />
+      <BalanceTransfer
+        transferValue={transferAmount}
+        onTransferAmountChange={setTransferAmount}
+        onClick={() => {
+          console.log({
+            from,
+            to,
+            transferAmount,
+            balance,
+          });
+        }}
+        balance={balance}
+      />
     </div>
   );
 }
